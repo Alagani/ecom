@@ -79,7 +79,7 @@ WSGI_APPLICATION = 'Eshop.wsgi.application'
 
 # import dj_database_url
 
-database_url = os.environ.get("DATABASE_URL")
+# database_url = os.environ.get("DATABASE_URL")
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -87,10 +87,12 @@ DATABASES = {
         }
     }
 
+database_url = os.environ.get("DATABASE_URL")
+DATABASES = {'default': dj_database_url.parse(database_url.decode('utf-8')) if database_url else None}
 
 
 
-DATABASES['default']=dj_database_url.parse(database_url)
+# DATABASES['default']=dj_database_url.parse(database_url)
 
 
 
