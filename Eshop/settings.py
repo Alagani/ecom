@@ -85,7 +85,12 @@ DATABASES = {
     }
 }
 
-DATABASES['default']=dj_database_url.parse(database_url)
+
+
+# Assuming database_url is a bytes-like object
+DATABASES['default'] = dj_database_url.parse(database_url.decode('utf-8'))
+
+
 
 
 # Password validation
