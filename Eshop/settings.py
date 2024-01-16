@@ -80,10 +80,6 @@ WSGI_APPLICATION = 'Eshop.wsgi.application'
 # import dj_database_url
 
 database_url = os.environ.get("DATABASE_URL")
-
-if database_url:
-    DATABASES = {'default': dj_database_url.config(default=database_url)}
-else:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
@@ -94,10 +90,7 @@ else:
 
 
 
-# Assuming database_url is a bytes-like object
-
-
-DATABASES['default'] = dj_database_url.parse(database_url.decode('utf-8'))
+DATABASES['default']=dj_database_url.parse(database_url)
 
 
 
